@@ -1,0 +1,3 @@
+INDEX VERSION 1.130+F:\FunCode\Games\kljASDGHFI\.metadata\.plugins\org.eclipse.jdt.core
+3451169305.index
+2006612645.index

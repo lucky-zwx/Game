@@ -1,6 +1,7 @@
 import FunCode.JAnimateSprite;
 import java.util.Date;
 import FunCode.JSprite;
+
 import java.util.ArrayList;
 
 public class Map1 extends Game
@@ -11,6 +12,8 @@ public class Map1 extends Game
   public JAnimateSprite JSA0;	//主角
   public JSprite JStrap0;	//第一个陷阱
   public JSprite JStrap1;	//第二个陷阱
+  public JSprite JSdowntrap1;	//第一个地砖消失陷阱
+  public JSprite JSdowntrap2;	//第二哥地砖小时陷阱
   public JSprite mapdown;	//横放着的阻挡物
   public JSprite Text_gameover;	//游戏结束标识
   public  int Ihelpman = 2;	//人质数量
@@ -19,13 +22,12 @@ public class Map1 extends Game
   public JSprite JSjump1;	//第二个跳跃动作
   public JSprite JSleft0;	//左右阻挡物
   public JSprite JSleft1;	//左右阻挡物
-  public int jump = 0;
-  public long jumptime;
-  public int tmp = 0;
-  public float whereX_A0 = 0;
-  public float whereY_A0 = 0;
-  public long time1 = date.getTime();
-  public long time2;
+  public int jump = 0;	//跳跃状态
+  public long jumptime;	//跳跃时间
+  public float whereX_A0 = 0;	//主角的x位置
+  public float whereY_A0 = 0;	//主角的Y的位置
+  public long time1 = date.getTime();	//保存游戏的开始时间
+  public long time2;	//不固定时间用于陷阱的时间计算
   
   public float getWhereX_A0() {
 	return whereX_A0;
@@ -48,14 +50,14 @@ public void setWhereY_A0(float whereY_A0) {
 	    JSA0 = new JAnimateSprite("A0");
 	    JSA1 = new JSprite("A1");
 	    JSA2 = new JSprite("A2");
-	    JStrap0 = new JSprite("trap0");
-	    JStrap1 = new JSprite("trap1");
-	        
-	    Text_gameover = new JSprite("Gameover");
-	    JSjump0 = new JSprite("jump0");
-	    JSjump1 = new JSprite("jump1");
-	    JSleft0 = new JSprite("map_left0");
-	    JSleft1 = new JSprite("map_left1");
+	    JStrap0 = new JSprite("Atrap0");
+	    JStrap1 = new JSprite("Atrap1");     
+	    Text_gameover = new JSprite("AGameover");
+	    JSjump0 = new JSprite("Ajump0");
+	    JSjump1 = new JSprite("Ajump1");
+	    JSleft0 = new JSprite("Amap_left");
+	    JSleft1 = new JSprite("Amap_right");
+	    mapdown = new JSprite("Amap_down");
 	    //设置主角的世界反弹模式
 	    JSA0.SetSpriteCollisionResponse(EnumDefine.COL_RESPONSE_STICKY);
 

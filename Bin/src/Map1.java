@@ -51,7 +51,9 @@ public void setWhereY_A0(float whereY_A0) {
 	    JSA1 = new JSprite("A1");
 	    JSA2 = new JSprite("A2");
 	    JStrap0 = new JSprite("Atrap0");
-	    JStrap1 = new JSprite("Atrap1");     
+	    JStrap1 = new JSprite("Atrap1");    
+	    JSdowntrap1 = new JSprite("Amap_downtrap1");
+	    JSdowntrap2 = new JSprite("Amap_downtrap2");
 	    Text_gameover = new JSprite("AGameover");
 	    JSjump0 = new JSprite("Ajump0");
 	    JSjump1 = new JSprite("Ajump1");
@@ -78,10 +80,11 @@ public void setWhereY_A0(float whereY_A0) {
   
 public void Map1_run()
   {
+	
 	if(CGameMain.g_GameMain.map_first.jump==1) {
 		if ((new Date().getTime()-jumptime)/100 > 3) {
 			if(JSA0.GetSpritePositionX() < 12.8)
-			JSA0.SpriteMoveTo(JSA0.GetSpritePositionX(), (float)11.898, 30, true);
+			JSA0.SpriteMoveTo(JSA0.GetSpritePositionX(), (float)12.850, 30, true);
 		}
 	}
     JSA1.SpriteRotateTo(-80.0F, 35.0F, true);			//设置第一个人质的摇摆动作
@@ -98,18 +101,18 @@ public void Map1_run()
     time2 = (new Date().getTime()-time1)/1000;
     if (time2%10>0 && time2%10<5) {				//设置电波的出现,以及阻碍物的出现
       JStrap1.SetSpriteEnable(false);
-//      JSmapdown.get(7).SetSpriteEnable(true);
-//      JSmapdown.get(9).SetSpriteEnable(false);
+      JSdowntrap1.SetSpriteEnable(true);
+      JSdowntrap2.SetSpriteEnable(false);
     } else {
       JStrap1.SetSpriteEnable(true);
-//      JSmapdown.get(7).SetSpriteEnable(false);
-//      JSmapdown.get(9).SetSpriteEnable(true);
+      JSdowntrap1.SetSpriteEnable(false);
+      JSdowntrap2.SetSpriteEnable(true);
     }
     
     /*
      * 跳跃高度限制
      */
-    if (JSA0.GetSpritePositionX() > -38 && JSA0.GetSpritePositionX() < -6.326) {							//如果主角在左半边就就进行相应的高度控制
+    if (JSA0.GetSpritePositionX() > -43 && JSA0.GetSpritePositionX() < 0) {							//如果主角在左半边就就进行相应的高度控制
     	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-5, (float)50, (float)50);
     }
     

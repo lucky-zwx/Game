@@ -87,7 +87,8 @@ public class CGameMain
 	        	map_first.setWhereY_A0(map_first.JSA0.GetSpritePositionY());
 	        }
 		CGameMain.g_GameMain.map_first.JSA0.SpriteMoveTo(CGameMain.g_GameMain.map_first.getWhereX_A0(), (float)(CGameMain.g_GameMain.map_first.getWhereY_A0() - 8.0D), 60.0F, true);
-		CGameMain.g_GameMain.map_first.jump = 1;
+//	        map_first.JSA0.SpriteMoveTo(map_first.JSA0.GetSpritePositionX(), map_first.JSA0.GetSpritePositionY()-8, 60, true);
+	        map_first.jump = 1;
 	    }
 	  }
   }
@@ -95,6 +96,7 @@ public class CGameMain
   
   public void OnKeyUp(int iKey)
   {
+	  //在第一关执行的按键判断
 	  if (mapstate == 1) {
 	    if ((iKey == EnumDefine.KEY_A) || (iKey == EnumDefine.KEY_D)) {
 	      map_first.JSA0.SetSpriteLinearVelocityX(0.0F);
@@ -119,9 +121,8 @@ public class CGameMain
 	}
 	//如果主角触碰到下方阻碍物
 	if (szSrcName.indexOf("down")!=-1) {
-		System.out.println("ok");
-		map_first.JSA0.SpriteMoveTo(map_first.JSA0.GetSpritePositionX(), (float)(map_first.JSA0.GetSpritePositionY()-0.001), 100, true);
 		map_first.JSA0.SetSpriteLinearVelocityY(0);
+		map_first.JSA0.SpriteMoveTo(map_first.JSA0.GetSpritePositionX(), (float)(map_first.JSA0.GetSpritePositionY()-0.001), 100, true);		
 	}
 	//如果触碰到陷阱就宣布游戏结束
 	if (szSrcName.indexOf("trap")!=-1) {

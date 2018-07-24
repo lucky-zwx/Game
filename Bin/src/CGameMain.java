@@ -86,7 +86,8 @@ public class CGameMain
 	        	map_first.setWhereX_A0(map_first.JSA0.GetSpritePositionX());
 	        	map_first.setWhereY_A0(map_first.JSA0.GetSpritePositionY());
 	        }
-	        map_first.jump();
+		CGameMain.g_GameMain.map_first.JSA0.SpriteMoveTo(CGameMain.g_GameMain.map_first.getWhereX_A0(), (float)(CGameMain.g_GameMain.map_first.getWhereY_A0() - 8.0D), 60.0F, true);
+		CGameMain.g_GameMain.map_first.jump = 1;
 	    }
 	  }
   }
@@ -110,14 +111,16 @@ public class CGameMain
   
   public void OnSpriteColSprite(String szSrcName, String szTarName)
   {
-	if (szSrcName.indexOf("")!=-1){
-		
+	//如果触碰到左右阻挡物
+	if (szSrcName.indexOf("left")!=-1){
+		map_first.JSA0.SpriteMoveTo(map_first.JSA0.GetSpritePositionX(), (float)(map_first.JSA0.GetSpritePositionY()-0.001), 100, true);
+		map_first.JSA0.SetSpriteLinearVelocityX(0);
+		map_first.JSA0.SetSpriteLinearVelocityY(0);
 	}
 	//如果主角触碰到下方阻碍物
 	if (szSrcName.indexOf("down")!=-1) {
 		System.out.println("ok");
-		map_first.JSA0.SpriteMoveTo(map_first.JSA0.GetSpritePositionX(), (float)(map_first.JSA0.GetSpritePositionX()-0.01), 100, true);
-//		map_first.JSA0.SetSpriteLinearVelocityX(0);
+		map_first.JSA0.SpriteMoveTo(map_first.JSA0.GetSpritePositionX(), (float)(map_first.JSA0.GetSpritePositionY()-0.001), 100, true);
 		map_first.JSA0.SetSpriteLinearVelocityY(0);
 	}
 	//如果触碰到陷阱就宣布游戏结束

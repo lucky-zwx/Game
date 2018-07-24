@@ -412,6 +412,7 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionActiveSend = "1";
+      CollisionPhysicsReceive = "1";
       CollisionPolyList = "-0.624 0.123 0.673 0.113 0.678 0.432 -0.633 0.432";
          mountID = "28";
    };
@@ -426,6 +427,7 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionActiveSend = "1";
+      CollisionPhysicsReceive = "1";
       CollisionPolyList = "-0.648 0.103 0.668 0.118 0.668 0.432 -0.638 0.422";
          mountID = "29";
    };
@@ -992,6 +994,7 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionActiveSend = "1";
+      CollisionPhysicsReceive = "1";
       CollisionPolyList = "-0.624 0.106 0.668 0.112 0.668 0.423 -0.624 0.411";
          mountID = "76";
    };
@@ -1006,6 +1009,7 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionActiveSend = "1";
+      CollisionPhysicsReceive = "1";
       CollisionPolyList = "-0.624 0.106 0.668 0.112 0.668 0.423 -0.624 0.411";
          mountID = "77";
    };

@@ -75,14 +75,6 @@ public void setWhereY_A0(float whereY_A0) {
   }
   
   
-  public void jump()
-  {
-	  if (CGameMain.g_GameMain.mapstate == 1) {
-		  CGameMain.g_GameMain.map_first.JSA0.SpriteMoveTo(CGameMain.g_GameMain.map_first.getWhereX_A0(), (float)(CGameMain.g_GameMain.map_first.getWhereY_A0() - 8.0D), 60.0F, true);
-		  CGameMain.g_GameMain.map_first.jump = 1;
-	  }
-  }
-  
   
 public void Map1_run()
   {

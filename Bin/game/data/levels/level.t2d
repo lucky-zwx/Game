@@ -104,7 +104,7 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionActiveSend = "1";
-      CollisionPolyList = "-0.894 -0.552 0.727 -0.362 0.776 0.828 0.403 1.000 -0.889 0.742";
+      CollisionPolyList = "-0.786 -0.559 0.624 -0.363 0.619 0.635 0.403 1.000 -0.781 0.710";
          mountID = "6";
    };
    new t2dStaticSprite(map_left0) {

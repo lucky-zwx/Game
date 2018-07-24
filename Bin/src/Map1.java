@@ -53,25 +53,32 @@ public void setWhereY_A0(float whereY_A0) {
 	    JSA2 = new JSprite("A2");
 	    JStrap0 = new JSprite("trap0");
 	    JStrap1 = new JSprite("trap1");
-	    
-	    for (int i = 0; i < 10; i++)
-	    {
-	    	if (i>0) {
-	    		if (i == 7 || i == 9) {
-	    			mapdown = new JSprite("map_down" + i);
-	    			JSmapdown.add(mapdown);
-	    		}else {
-		      mapdown = new JSprite("map_down" + i);
-		      mapdown.CloneSprite("map_down0");
-		      JSmapdown.add(mapdown);
-		      }
-	      }else {
-		      mapdown = new JSprite("map_down" + i);
-	    	  JSmapdown.add(mapdown);
-	      }
-	    	JSmapdown.get(i).SetSpriteCollisionSend(true);
-	    	}
+/*
+ * 原代	    
+ */
+//	    for (int i = 0; i < 10; i++)
+//	    {
+//	    	if (i>0) {
+//	    		if (i == 7 || i == 9) {
+//	    			mapdown = new JSprite("map_down" + i);
+//	    			JSmapdown.add(mapdown);
+//	    		}else {
+//		      mapdown = new JSprite("map_down" + i);
+//		      mapdown.CloneSprite("map_down0");
+//		      JSmapdown.add(mapdown);
+//		      }
+//	      }else {
+//		      mapdown = new JSprite("map_down" + i);
+//	    	  JSmapdown.add(mapdown);
+//	      }
+//	    	JSmapdown.get(i).SetSpriteCollisionSend(true);
+//	    	}
 
+	    //最新初始化
+	    for (int i=0;i<10;i++) {
+	    	mapdown = new JSprite("map_down"+i);
+	    	JSmapdown.add(mapdown);
+	    }
 	        
 	    Text_gameover = new JSprite("Gameover");
 	    JSjump0 = new JSprite("jump0");
@@ -190,7 +197,7 @@ public void Map1_run()
     }
     
     //平地限制
-    if (JSA0.GetSpritePositionY() > 12 || JSA0.GetSpritePositionX() < -38) {
+    if (JSA0.GetSpritePositionY() > 13 || JSA0.GetSpritePositionX() < -38) {
     	GameEnd();
     	CGameMain.g_GameMain.m_iGameState=3;
     }

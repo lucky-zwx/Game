@@ -119,11 +119,12 @@ public class CGameMain
       if ((szTarName.equals("A0")) && (szSrcName.equals("map_down" + i)))
       {
         map_first.JSA0.SetSpritePositionY(map_first.JSA0.GetSpritePositionY() - 0.001F);
+        map_first.JSA0.SetSpriteLinearVelocityX(0);
         map_first.JSA0.SetSpriteLinearVelocityY(0);
       }
     }
     
-    for (int i = 0; i < 10; i++) {											//如果主角碰触到左右两边的阻碍物就将X轴速度设为0
+    for (int i = 0; i < 2; i++) {											//如果主角碰触到左右两边的阻碍物就将X轴速度设为0
       if ((szTarName.equals("A0")) && (szSrcName.equals("map_left" + i)))
       {
         if (!map_first.JSA0.GetSpriteFlipX()) {
@@ -132,6 +133,7 @@ public class CGameMain
           map_first.JSA0.SetSpritePositionX(map_first.JSA0.GetSpritePositionX() + 0.001F);
         }
         map_first.JSA0.SetSpriteLinearVelocityX(0);
+        map_first.JSA0.SetSpriteLinearVelocityY(0);
       }
     }
     

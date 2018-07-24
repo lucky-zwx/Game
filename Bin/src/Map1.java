@@ -1,6 +1,7 @@
 import FunCode.JAnimateSprite;
 import java.util.Date;
 import FunCode.JSprite;
+
 import java.util.ArrayList;
 
 public class Map1 extends Game
@@ -11,6 +12,8 @@ public class Map1 extends Game
   public JAnimateSprite JSA0;	//主角
   public JSprite JStrap0;	//第一个陷阱
   public JSprite JStrap1;	//第二个陷阱
+  public JSprite JSdowntrap1;	//第一个地砖消失陷阱
+  public JSprite JSdowntrap2;	//第二哥地砖小时陷阱
   public JSprite mapdown;	//横放着的阻挡物
   public JSprite Text_gameover;	//游戏结束标识
   public  int Ihelpman = 2;	//人质数量
@@ -19,14 +22,12 @@ public class Map1 extends Game
   public JSprite JSjump1;	//第二个跳跃动作
   public JSprite JSleft0;	//左右阻挡物
   public JSprite JSleft1;	//左右阻挡物
-  public ArrayList<JSprite> JSmapdown;	//存储陷阱的空间
-  public int jump = 0;
-  public long jumptime;
-  public int tmp = 0;
-  public float whereX_A0 = 0;
-  public float whereY_A0 = 0;
-  public long time1 = date.getTime();
-  public long time2;
+  public int jump = 0;	//跳跃状态
+  public long jumptime;	//跳跃时间
+  public float whereX_A0 = 0;	//主角的x位置
+  public float whereY_A0 = 0;	//主角的Y的位置
+  public long time1 = date.getTime();	//保存游戏的开始时间
+  public long time2;	//不固定时间用于陷阱的时间计算
   
   public float getWhereX_A0() {
 	return whereX_A0;
@@ -46,72 +47,20 @@ public void setWhereY_A0(float whereY_A0) {
 
 
   public void Mapbegin() {
-	  	JSmapdown = new ArrayList<JSprite>();
 	    JSA0 = new JAnimateSprite("A0");
-	    JSA0.SetSpriteMass(10);
 	    JSA1 = new JSprite("A1");
 	    JSA2 = new JSprite("A2");
-	    JStrap0 = new JSprite("trap0");
-	    JStrap1 = new JSprite("trap1");
-/*
- * 原代	    
- */
-//	    for (int i = 0; i < 10; i++)
-//	    {
-//	    	if (i>0) {
-//	    		if (i == 7 || i == 9) {
-//	    			mapdown = new JSprite("map_down" + i);
-//	    			JSmapdown.add(mapdown);
-//	    		}else {
-//		      mapdown = new JSprite("map_down" + i);
-//		      mapdown.CloneSprite("map_down0");
-//		      JSmapdown.add(mapdown);
-//		      }
-//	      }else {
-//		      mapdown = new JSprite("map_down" + i);
-//	    	  JSmapdown.add(mapdown);
-//	      }
-//	    	JSmapdown.get(i).SetSpriteCollisionSend(true);
-//	    	}
-
-	    //最新初始化
-	    for (int i=0;i<10;i++) {
-	    	mapdown = new JSprite("map_down"+i);
-	    	JSmapdown.add(mapdown);
-	    }
-	        
-	    Text_gameover = new JSprite("Gameover");
-	    JSjump0 = new JSprite("jump0");
-	    JSjump1 = new JSprite("jump1");
-	    JSleft0 = new JSprite("map_left0");
-	    JSleft1 = new JSprite("map_left1");
-	    
-	    JSA0.SetSpritePosition((float)-37.360, (float)11.898);
+	    JStrap0 = new JSprite("Atrap0");
+	    JStrap1 = new JSprite("Atrap1");     
+	    Text_gameover = new JSprite("AGameover");
+	    JSjump0 = new JSprite("Ajump0");
+	    JSjump1 = new JSprite("Ajump1");
+	    JSleft0 = new JSprite("Amap_left");
+	    JSleft1 = new JSprite("Amap_right");
+	    mapdown = new JSprite("Amap_down");
+	    //设置主角的世界反弹模式
 	    JSA0.SetSpriteCollisionResponse(EnumDefine.COL_RESPONSE_STICKY);
-	    JSA1.SetSpritePosition((float)46.506, (float)-25.641);
-	    JSA2.SetSpritePosition((float)-9.726, (float)11.797);
-	    double x = -34.444;
-	    double x2 = 0.567;
-	    double y = 14.433;
-	    double y2 = 5.567;
-	    for (int i=0;i<10;i++) {
-	    	if (i<6) {
-	    	JSmapdown.get(i).SetSpritePosition((float)x, (float)y);
-	    	x+=5;
-	    	}
-	    	else {
-	    		JSmapdown.get(i).SetSpritePosition((float)x2, (float)y2);
-	    		x2=x2+10;
-	    		y2=y2-5;
-	    	}
-	    //	System.out.println(i+".x="+JSmapdown.get(i).GetSpritePositionX());
-	    //	System.out.println(i+".y="+JSmapdown.get(i).GetSpritePositionY());
-	    }
-	    JStrap0.SetSpritePosition((float)30.302, (float)-39.458);
-	    JStrap1.SetSpritePosition((float)-8.848, (float)12.714);
-	    Text_gameover.SetSpritePosition((float)1.520, (float)2.098);
-	    JSleft0.SetSpritePosition((float)-12.368, (float)11.688);
-	    JSleft1.SetSpritePosition((float)-6.326, (float)11.688);
+
 	    
   }
   
@@ -122,19 +71,7 @@ public void setWhereY_A0(float whereY_A0) {
   
   public void GameEnd()
   {
-    Text_gameover.SetSpriteVisible(true);
-    JSA0.DeleteSprite();
-    JSA1.DeleteSprite();
-    JSA2.DeleteSprite();
-    JSjump0.DeleteSprite();
-    JSjump1.DeleteSprite();
-    for(int i=0;i<10;i++) {
-    	JSmapdown.get(i).DeleteSprite();
-    }
-    JStrap0.DeleteSprite();
-    JStrap1.DeleteSprite();
-    JSleft0.DeleteSprite();
-    JSleft1.DeleteSprite();
+	  Text_gameover.SetSpriteVisible(true);
   }
   
   
@@ -169,12 +106,12 @@ public void Map1_run()
     time2 = (new Date().getTime()-time1)/1000;
     if (time2%10>0 && time2%10<5) {				//设置电波的出现,以及阻碍物的出现
       JStrap1.SetSpriteEnable(false);
-      JSmapdown.get(7).SetSpriteEnable(true);
-      JSmapdown.get(9).SetSpriteEnable(false);
+//      JSmapdown.get(7).SetSpriteEnable(true);
+//      JSmapdown.get(9).SetSpriteEnable(false);
     } else {
       JStrap1.SetSpriteEnable(true);
-      JSmapdown.get(7).SetSpriteEnable(false);
-      JSmapdown.get(9).SetSpriteEnable(true);
+//      JSmapdown.get(7).SetSpriteEnable(false);
+//      JSmapdown.get(9).SetSpriteEnable(true);
     }
     
     /*

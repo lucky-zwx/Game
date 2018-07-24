@@ -1,7 +1,7 @@
-//-------------------------- 7/24/2018 -- 14:59:14 -----
+//-------------------------- 7/24/2018 -- 17:28:26 -----
 Processor Init:
-   AMD (unknown), ~2.35 Ghz
-     (timed at roughly 2.37 Ghz)
+   AMD (unknown), ~2.40 Ghz
+     (timed at roughly 2.39 Ghz)
    FPU detected
    MMX detected
    SSE detected
@@ -123,13 +123,6 @@ Activating DirectInput...
 DirectInput joystick failed to enable!
 Compiling C:/Users/ZHUWX/Documents/Tencent Files/2718933225/FileRecv/新建文件夹 (3)/Bin/game/data/levels/level.t2d...
 Loading compiled script C:/Users/ZHUWX/Documents/Tencent Files/2718933225/FileRecv/新建文件夹 (3)/Bin/game/data/levels/level.t2d.
-t2dSceneGraph::addToScene() - Object '1402' is already in a SceneGraph!.
-t2dSceneGraph::addToScene() - Object '1403' is already in a SceneGraph!.
-t2dSceneGraph::addToScene() - Object '1404' is already in a SceneGraph!.
-t2dSceneGraph::addToScene() - Object '1405' is already in a SceneGraph!.
-t2dSceneGraph::addToScene() - Object '1406' is already in a SceneGraph!.
-t2dSceneGraph::addToScene() - Object '1407' is already in a SceneGraph!.
-t2dSceneGraph::addToScene() - Object '1408' is already in a SceneGraph!.
 DirectInput deactivated.
 Shutting down the OpenGL display device...
 Making the GL rendering context not current...

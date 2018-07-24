@@ -75,7 +75,7 @@
       SortPoint = "0.027 0.043";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-      CollisionActiveReceive = "1";
+      CollisionActiveSend = "1";
       CollisionPolyList = "-0.545 0.619 -0.447 0.658 -0.471 0.771 -0.594 0.746";
          mountID = "4";
    };
@@ -145,6 +145,8 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionActiveReceive = "1";
+      CollisionPhysicsSend = "1";
+      CollisionResponseMode = "RIGID";
       CollisionPolyList = "-0.052 -1.000 1.000 -1.000 1.000 1.000 -0.039 1.000";
       LinkPoints = "0.458 -0.191";
          mountID = "9";
@@ -161,6 +163,7 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       CollisionActiveSend = "1";
+      CollisionPhysicsReceive = "1";
       CollisionPolyList = "-0.638 0.108 0.668 0.113 0.658 0.432 -0.633 0.417";
       LinkPoints = "-0.658 -0.572 0.000 0.000";
          mountID = "12";
@@ -408,6 +411,7 @@
       size = "8.866 8.866";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
+      CollisionActiveSend = "1";
       CollisionPolyList = "-0.624 0.123 0.673 0.113 0.678 0.432 -0.633 0.432";
          mountID = "28";
    };
@@ -421,6 +425,7 @@
       size = "8.866 8.866";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
+      CollisionActiveSend = "1";
       CollisionPolyList = "-0.648 0.103 0.668 0.118 0.668 0.432 -0.638 0.422";
          mountID = "29";
    };
@@ -975,5 +980,33 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "75";
+   };
+   new t2dStaticSprite(Amap_down1) {
+      imageMap = "sdImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "0.000 6.402";
+      SortPoint = "0.011 0.278";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      CollisionActiveSend = "1";
+      CollisionPolyList = "-0.624 0.106 0.668 0.112 0.668 0.423 -0.624 0.411";
+         mountID = "76";
+   };
+   new t2dStaticSprite(Amap_down2) {
+      imageMap = "sdImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "-1.07374e+008 -1.07374e+008 -1.07374e+008 -1.07374e+008";
+      canSaveDynamicFields = "1";
+      Position = "21.737 -3.835";
+      SortPoint = "0.011 0.278";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+      CollisionActiveSend = "1";
+      CollisionPolyList = "-0.624 0.106 0.668 0.112 0.668 0.423 -0.624 0.411";
+         mountID = "77";
    };
 };

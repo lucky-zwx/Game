@@ -66,18 +66,19 @@ public class CGameMain
 	    if (iKey == EnumDefine.KEY_D)
 	    {
 	      map_first.JSA0.SetSpriteLinearVelocityX(25.0F);
+//	      map_first.JSA0.SetSpriteLinearVelocityY(10);
 	      map_first.JSA0.SetSpriteFlipX(false);
 	      map_first.JSjump0.SetSpriteFlipX(false);
 	    }
 	    if (iKey == EnumDefine.KEY_A)
 	    {
 	      map_first.JSA0.SetSpriteLinearVelocityX(-25.0F);
+//	      map_first.JSA0.SetSpriteLinearVelocityY(10);
 	      map_first.JSA0.SetSpriteFlipX(true);
 	      map_first.JSjump0.SetSpriteFlipX(true);
 	  	}
 	    if (iKey == EnumDefine.KEY_W)
 	    {
-//	    	System.out.println(new Date().getTime()-map_first.time1);
 	    	map_first.jumptime = new Date().getTime();
 	        map_first.JSjump0.SetSpriteVisible(true);
 	        map_first.JSA0.SetSpriteVisible(false);
@@ -86,11 +87,6 @@ public class CGameMain
 	        	map_first.setWhereY_A0(map_first.JSA0.GetSpritePositionY());
 	        }
 	        map_first.jump();
-	    }
-	    if (iKey == EnumDefine.KEY_R && m_iGameState==3) {
-	    	map_first.Text_gameover.SetSpriteVisible(false);
-	    	map_first = new Map1();
-	    	map_first.Mapbegin();
 	    }
 	  }
   }
@@ -114,48 +110,35 @@ public class CGameMain
   
   public void OnSpriteColSprite(String szSrcName, String szTarName)
   {
-	  
-    for (int i = 0; i < 10; i++) {											//如果主角碰触到下方的阻碍物就将Y轴速度设为0
-      if ((szTarName.equals("A0")) && (szSrcName.equals("map_down" + i)))
-      {
-        map_first.JSA0.SetSpritePositionY(map_first.JSA0.GetSpritePositionY() - 0.001F);
-        map_first.JSA0.SetSpriteLinearVelocityX(0);
-        map_first.JSA0.SetSpriteLinearVelocityY(0);
-      }
-    }
-    
-    for (int i = 0; i < 2; i++) {											//如果主角碰触到左右两边的阻碍物就将X轴速度设为0
-      if ((szTarName.equals("A0")) && (szSrcName.equals("map_left" + i)))
-      {
-        if (!map_first.JSA0.GetSpriteFlipX()) {
-          map_first.JSA0.SetSpritePositionX(map_first.JSA0.GetSpritePositionX() - 0.001F);
-        } else {
-          map_first.JSA0.SetSpritePositionX(map_first.JSA0.GetSpritePositionX() + 0.001F);
-        }
-        map_first.JSA0.SetSpriteLinearVelocityX(0);
-        map_first.JSA0.SetSpriteLinearVelocityY(0);
-      }
-    }
-    
-    if (szSrcName.equals("A1"))						//如果触碰到人质就删除人质，并且人质数减一
+	if (szSrcName.indexOf("")!=-1){
+		
+	}
+	//如果主角触碰到下方阻碍物
+	if (szSrcName.indexOf("down")!=-1) {
+		System.out.println("ok");
+		map_first.JSA0.SpriteMoveTo(map_first.JSA0.GetSpritePositionX(), (float)(map_first.JSA0.GetSpritePositionX()-0.01), 100, true);
+//		map_first.JSA0.SetSpriteLinearVelocityX(0);
+		map_first.JSA0.SetSpriteLinearVelocityY(0);
+	}
+	//如果触碰到陷阱就宣布游戏结束
+	if (szSrcName.indexOf("trap")!=-1) {
+		map_first.GameEnd();
+	}
+	//如果触碰到人质就删除人质，并且人质数减一
+    if (szSrcName.equals("A1"))						
     {
       map_first.Ihelpman -= 1;
       map_first.JSA1.SetSpriteEnable(false);
       map_first.JSA1.DeleteSprite();
     }
-    
-    if (szSrcName.equals("A2"))						//如果触碰到人质就删除人质，并且人质数减一
+  //如果触碰到人质就删除人质，并且人质数减一
+    if (szSrcName.equals("A2"))						
     {
       map_first.Ihelpman -= 1;
       map_first.JSA2.SetSpriteEnable(false);
       map_first.JSA2.DeleteSprite();
     }
     
-    for (int i = 0; i < 2; i++) {
-      if (szSrcName.equals("trap" + i)) {
-        map_first.GameEnd();
-      }
-    }
   }
   
   public void OnSpriteColWorldLimit(String szName, int iColSide) {}

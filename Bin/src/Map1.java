@@ -134,9 +134,9 @@ public void Map1_run()
     }
     
     //平地限制
-    if (JSA0.GetSpritePositionY() > 13 || JSA0.GetSpritePositionX() < -38) {
-    	GameEnd();
-    	CGameMain.g_GameMain.m_iGameState=3;
+    if (JSA0.GetSpritePositionY() > 14 || JSA0.GetSpritePositionX() < -43) {
+//    	GameEnd();
+//    	CGameMain.g_GameMain.m_iGameState=3;
     }
     
   }

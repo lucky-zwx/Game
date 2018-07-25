@@ -2,8 +2,6 @@ import FunCode.JAnimateSprite;
 import java.util.Date;
 import FunCode.JSprite;
 
-import java.util.ArrayList;
-
 public class Map1 extends Game
 {
   Date date = new Date();
@@ -47,6 +45,7 @@ public void setWhereY_A0(float whereY_A0) {
 
 
   public void Mapbegin() {
+	  	//初始化角色
 	    JSA0 = new JAnimateSprite("A0");
 	    JSA1 = new JSprite("A1");
 	    JSA2 = new JSprite("A2");
@@ -61,9 +60,7 @@ public void setWhereY_A0(float whereY_A0) {
 	    JSleft1 = new JSprite("Amap_right");
 	    mapdown = new JSprite("Amap_down");
 	    //设置主角的世界反弹模式
-	    JSA0.SetSpriteCollisionResponse(EnumDefine.COL_RESPONSE_STICKY);
-
-	    
+	    JSA0.SetSpriteCollisionResponse(EnumDefine.COL_RESPONSE_STICKY); 
   }
   
   public Map1()
@@ -73,6 +70,7 @@ public void setWhereY_A0(float whereY_A0) {
   
   public void GameEnd()
   {
+	  //游戏失败显示Gameover
 	  Text_gameover.SetSpriteVisible(true);
   }
   
@@ -81,25 +79,29 @@ public void setWhereY_A0(float whereY_A0) {
 public void Map1_run()
   {
 	
+	//控制跳跃时间
 	if(CGameMain.g_GameMain.map_first.jump==1) {
 		if ((new Date().getTime()-jumptime)/100 > 3) {
 			if(JSA0.GetSpritePositionX() < 12.8)
 			JSA0.SpriteMoveTo(JSA0.GetSpritePositionX(), (float)12.850, 30, true);
 		}
 	}
-    JSA1.SpriteRotateTo(-80.0F, 35.0F, true);			//设置第一个人质的摇摆动作
+	
+	//设置第一个人质的摇摆动作
+    JSA1.SpriteRotateTo(-80.0F, 35.0F, true);			
     if (JSA1.GetSpriteRotation() + 0.1D >= 80.0D) {
       JSA1.SpriteRotateTo(60.0F, 35.0F, true);
     }
     
-    JStrap0.SpriteMoveTo(30.618F, -3.458F, 10.0F, true);		//设置第一个陷阱的移动
+    //设置第一个陷阱的移动
+    JStrap0.SpriteMoveTo(30.618F, -3.458F, 10.0F, true);		
     if (JStrap0.GetSpritePositionY() + 0.1D >= -3.458D) {
       JStrap0.SetSpritePosition(30.618F, -40.F);
     }
     
-    
+    //设置电波的出现,以及阻碍物的出现
     time2 = (new Date().getTime()-time1)/1000;
-    if (time2%10>0 && time2%10<5) {				//设置电波的出现,以及阻碍物的出现
+    if (time2%10>0 && time2%10<5) {				
       JStrap1.SetSpriteEnable(false);
       JSdowntrap1.SetSpriteEnable(true);
       JSdowntrap2.SetSpriteEnable(false);
@@ -112,26 +114,32 @@ public void Map1_run()
     /*
      * 跳跃高度限制
      */
-    if (JSA0.GetSpritePositionX() > -43 && JSA0.GetSpritePositionX() < 0) {							//如果主角在左半边就就进行相应的高度控制
-    	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-5, (float)50, (float)50);
+    if (JSA0.GetSpritePositionX() > -43 && JSA0.GetSpritePositionX() < -11) {
+    	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-2, (float)50, (float)50);
     }
     
-    if (JSA0.GetSpritePositionX() > -6.326 && JSA0.GetSpritePositionX() < 10.567) {							//如果主角在左半边就就进行相应的高度控制
-    	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-20, (float)50, (float)50);
+    if (JSA0.GetSpritePositionX() > -11 && JSA0.GetSpritePositionX() < -2) {
+    	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-8, (float)50, (float)50);
     }
     
-    if (JSA0.GetSpritePositionX() > 10.567 && JSA0.GetSpritePositionX() < 20.567) {							//如果主角在左半边就就进行相应的高度控制
-    	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-30, (float)50, (float)50);
+    if (JSA0.GetSpritePositionX() > -2 && JSA0.GetSpritePositionX() < 11) {
+    	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-15, (float)50, (float)50);
     }
     
-    if (JSA0.GetSpritePositionX() > 20.567) {																//如果主角在左半边就就进行相应的高度控制
-    	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-50, (float)50, (float)50);
+    if (JSA0.GetSpritePositionX() > 11 && JSA0.GetSpritePositionX() < 19) {
+    	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-21, (float)50, (float)50);
+    }
+    
+    
+    if (JSA0.GetSpritePositionX() > 19 && JSA0.GetSpritePositionX() < 28) {
+    	JSA0.SetSpriteWorldLimit(3, (float)-50, (float)-25, (float)50, (float)50);
     }
     
     //平地限制
     if (JSA0.GetSpritePositionY() > 14 || JSA0.GetSpritePositionX() < -43) {
-//    	GameEnd();
-//    	CGameMain.g_GameMain.m_iGameState=3;
+    	System.out.println("因平地限制死亡！！！");
+    	GameEnd();
+    	CGameMain.g_GameMain.m_iGameState=3;
     }
     
   }

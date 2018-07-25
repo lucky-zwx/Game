@@ -5,6 +5,7 @@ import FunCode.JSprite;
 public class Map1 extends Game
 {
   Date date = new Date();
+  public JSprite background;
   public JSprite JSA1;	//第一个人质
   public JSprite JSA2;	//第二个人质
   public JAnimateSprite JSA0;	//主角
@@ -16,6 +17,7 @@ public class Map1 extends Game
   public JSprite mapdown1;	//横放着的阻挡物
   public JSprite mapdown2;	//横放着的阻挡物
   public JSprite Text_gameover;	//游戏结束标识
+  public JSprite Awin;	//成功
   public  int Ihelpman = 2;	//人质数量
   public float Time = 0.0F;	//用于陷阱的游戏时间
   public JSprite JSjump0;	//第一个跳跃动作
@@ -48,6 +50,7 @@ public void setWhereY_A0(float whereY_A0) {
 
   public void Mapbegin() {
 	  	//初始化角色
+	  	background = new JSprite("Abackground");
 	    JSA0 = new JAnimateSprite("A0");
 	    JSA1 = new JSprite("A1");
 	    JSA2 = new JSprite("A2");
@@ -56,6 +59,7 @@ public void setWhereY_A0(float whereY_A0) {
 	    JSdowntrap1 = new JSprite("Amap_downtrap1");
 	    JSdowntrap2 = new JSprite("Amap_downtrap2");
 	    Text_gameover = new JSprite("AGameover");
+	    Awin = new JSprite("Awin");
 	    JSjump0 = new JSprite("Ajump0");
 	    JSjump1 = new JSprite("Ajump1");
 	    JSleft0 = new JSprite("Amap_left");
@@ -161,8 +165,16 @@ public void Map1_run()
     	GameEnd();
     }
     
-    if (Ihelpman == 0) {
-    	
+    if (CGameMain.g_GameMain.map_first.Ihelpman == -1 && CGameMain.g_GameMain.map_first.Ihelpman == 0) {
+    	Awin.SetSpriteVisible(true);
+    	//暂停
+    	try {
+			Thread.sleep(100);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	    background.SetSpriteEnable(false);
     }
     
   }

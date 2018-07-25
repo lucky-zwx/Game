@@ -115,7 +115,7 @@ public class CGameMain
 		//如果触碰到左右阻挡物
 		if (szSrcName.indexOf("left")!=-1 || szSrcName.indexOf("right")!=-1){
 			map_first.JSA0.SetSpriteLinearVelocityX(0);
-			map_first.JSA0.SpriteMoveTo((float) (map_first.JSA0.GetSpritePositionX()-0.01), (float)(map_first.JSA0.GetSpritePositionY()), 60, true);
+			map_first.JSA0.SpriteMoveTo((float) (map_first.JSA0.GetSpritePositionX()-1), (float)(map_first.JSA0.GetSpritePositionY()), 60, true);
 		}
 		//如果主角触碰到下方阻碍物
 		if (szSrcName.indexOf("down")!=-1) {
@@ -130,16 +130,16 @@ public class CGameMain
 		//如果触碰到人质就删除人质，并且人质数减一
 	    if (szSrcName.equals("A1"))						
 	    {
-	      map_first.Ihelpman -= 1;
-	      map_first.JSA1.SetSpriteEnable(false);
 	      map_first.JSA1.DeleteSprite();
+	      map_first.Ihelpman--;
+	      System.out.println(map_first.Ihelpman);
 	    }
 	    //如果触碰到人质就删除人质，并且人质数减一
 	    if (szSrcName.equals("A2"))						
 	    {
-	      map_first.Ihelpman -= 1;
 	      map_first.JSA2.SetSpriteEnable(false);
-	      map_first.JSA2.DeleteSprite();
+	      map_first.Ihelpman--;
+	      System.out.println(map_first.Ihelpman);
 	    }
 	
 	}

@@ -37,7 +37,7 @@
       cameraPosition = "0 0";
       cameraSize = "100 75";
 
-   new t2dStaticSprite() {
+   new t2dStaticSprite(Abackground) {
       imageMap = "huoImageMap";
       frame = "0";
       useSourceRect = "0";
@@ -47,7 +47,6 @@
       size = "100.000 75.249";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-      CollisionActiveSend = "1";
          mountID = "2";
    };
    new t2dStaticSprite(A2) {
@@ -147,7 +146,7 @@
       CollisionActiveReceive = "1";
       CollisionPhysicsSend = "1";
       CollisionResponseMode = "CUSTOM";
-      CollisionPolyList = "-0.052 -1.000 1.000 -1.000 0.988 0.923 -0.039 0.943";
+      CollisionPolyList = "-0.039 0.943 0.181 -1.000 1.000 -1.000 0.723 0.850";
       LinkPoints = "0.458 -0.191";
          mountID = "9";
    };
@@ -1012,5 +1011,18 @@
       CollisionPhysicsReceive = "1";
       CollisionPolyList = "-0.624 0.106 0.668 0.112 0.668 0.423 -0.624 0.411";
          mountID = "77";
+   };
+   new t2dStaticSprite(Awin) {
+      imageMap = "_002ImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "-1.07374e+008 -1.07374e+008 -1.07374e+008 -1.07374e+008";
+      canSaveDynamicFields = "1";
+      Visible = "0";
+      Position = "-1.625 -3.750";
+      size = "56.750 42.500";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "78";
    };
 };

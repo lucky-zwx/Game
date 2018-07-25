@@ -11,8 +11,10 @@ public class Map1 extends Game
   public JSprite JStrap0;	//第一个陷阱
   public JSprite JStrap1;	//第二个陷阱
   public JSprite JSdowntrap1;	//第一个地砖消失陷阱
-  public JSprite JSdowntrap2;	//第二哥地砖小时陷阱
+  public JSprite JSdowntrap2;	//第二个地砖消失陷阱
   public JSprite mapdown;	//横放着的阻挡物
+  public JSprite mapdown1;	//横放着的阻挡物
+  public JSprite mapdown2;	//横放着的阻挡物
   public JSprite Text_gameover;	//游戏结束标识
   public  int Ihelpman = 2;	//人质数量
   public float Time = 0.0F;	//用于陷阱的游戏时间
@@ -59,6 +61,8 @@ public void setWhereY_A0(float whereY_A0) {
 	    JSleft0 = new JSprite("Amap_left");
 	    JSleft1 = new JSprite("Amap_right");
 	    mapdown = new JSprite("Amap_down");
+	    mapdown1 = new JSprite("Amap_down1");
+	    mapdown2 = new JSprite("Amap_down2");
 	    //设置主角的世界反弹模式
 	    JSA0.SetSpriteCollisionResponse(EnumDefine.COL_RESPONSE_STICKY); 
   }
@@ -70,8 +74,23 @@ public void setWhereY_A0(float whereY_A0) {
   
   public void GameEnd()
   {
-	  //游戏失败显示Gameover
-	  Text_gameover.SetSpriteVisible(true);
+	  	//游戏失败显示Gameover
+	  	Text_gameover.SetSpriteVisible(true);
+	    JSA0.SetSpriteEnable(false);
+	    JSA1.SetSpriteEnable(false);
+	    JSA2.SetSpriteEnable(false);
+	    JStrap0.SetSpriteEnable(false);
+	    JStrap1.SetSpriteEnable(false);
+	    JSdowntrap1.SetSpriteEnable(false);
+	    JSdowntrap2.SetSpriteEnable(false);
+	    JSjump0.SetSpriteEnable(false);
+	    JSjump1.SetSpriteEnable(false);
+	    JSleft0.SetSpriteEnable(false);
+	    JSleft1.SetSpriteEnable(false);
+	    mapdown.SetSpriteEnable(false);
+	    mapdown1.SetSpriteEnable(false);
+	    mapdown2.SetSpriteEnable(false);
+	    CGameMain.g_GameMain.m_iGameState = 3;
   }
   
   
@@ -139,7 +158,6 @@ public void Map1_run()
     if (JSA0.GetSpritePositionY() > 14 || JSA0.GetSpritePositionX() < -43) {
     	System.out.println("因平地限制死亡！！！");
     	GameEnd();
-    	CGameMain.g_GameMain.m_iGameState=3;
     }
     
   }

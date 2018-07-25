@@ -46,6 +46,7 @@ public class CGameMain
   
   public void GameEnd()
   {
+	  
   }
   
   public void OnMouseMove(float fMouseX, float fMouseY) {}
@@ -109,35 +110,39 @@ public class CGameMain
   
   public void OnSpriteColSprite(String szSrcName, String szTarName)
   {
-	//如果触碰到左右阻挡物
-	if (szSrcName.indexOf("left")!=-1 || szSrcName.indexOf("right")!=-1){
-		map_first.JSA0.SetSpriteLinearVelocityX(0);
-		map_first.JSA0.SpriteMoveTo((float) (map_first.JSA0.GetSpritePositionX()-0.01), (float)(map_first.JSA0.GetSpritePositionY()), 100, true);
+	//如果为第一关
+	if(mapstate == 1) {
+		//如果触碰到左右阻挡物
+		if (szSrcName.indexOf("left")!=-1 || szSrcName.indexOf("right")!=-1){
+			map_first.JSA0.SetSpriteLinearVelocityX(0);
+			map_first.JSA0.SpriteMoveTo((float) (map_first.JSA0.GetSpritePositionX()-0.01), (float)(map_first.JSA0.GetSpritePositionY()), 100, true);
+		}
+		//如果主角触碰到下方阻碍物
+		if (szSrcName.indexOf("down")!=-1) {
+			map_first.JSA0.SetSpriteLinearVelocityY(0);
+			map_first.JSA0.SpriteMoveTo(map_first.JSA0.GetSpritePositionX(), (float)(map_first.JSA0.GetSpritePositionY()-0.01), 100, true);		
+		}
+		//如果触碰到陷阱就宣布游戏结束
+		if (szSrcName.indexOf("Atrap")!=-1) {
+			map_first.GameEnd();
+			System.out.println("主角因为触碰到陷阱死亡");
+		}
+		//如果触碰到人质就删除人质，并且人质数减一
+	    if (szSrcName.equals("A1"))						
+	    {
+	      map_first.Ihelpman -= 1;
+	      map_first.JSA1.SetSpriteEnable(false);
+	      map_first.JSA1.DeleteSprite();
+	    }
+	    //如果触碰到人质就删除人质，并且人质数减一
+	    if (szSrcName.equals("A2"))						
+	    {
+	      map_first.Ihelpman -= 1;
+	      map_first.JSA2.SetSpriteEnable(false);
+	      map_first.JSA2.DeleteSprite();
+	    }
+	
 	}
-	//如果主角触碰到下方阻碍物
-	if (szSrcName.indexOf("down")!=-1) {
-		map_first.JSA0.SetSpriteLinearVelocityY(0);
-		map_first.JSA0.SpriteMoveTo(map_first.JSA0.GetSpritePositionX(), (float)(map_first.JSA0.GetSpritePositionY()-0.01), 100, true);		
-	}
-	//如果触碰到陷阱就宣布游戏结束
-	if (szSrcName.indexOf("Atrap")!=-1) {
-		map_first.GameEnd();
-		System.out.println("主角因为触碰到陷阱死亡");
-	}
-	//如果触碰到人质就删除人质，并且人质数减一
-    if (szSrcName.equals("A1"))						
-    {
-      map_first.Ihelpman -= 1;
-      map_first.JSA1.SetSpriteEnable(false);
-      map_first.JSA1.DeleteSprite();
-    }
-    //如果触碰到人质就删除人质，并且人质数减一
-    if (szSrcName.equals("A2"))						
-    {
-      map_first.Ihelpman -= 1;
-      map_first.JSA2.SetSpriteEnable(false);
-      map_first.JSA2.DeleteSprite();
-    }
     
   }
   

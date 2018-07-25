@@ -72,6 +72,7 @@ public void setWhereY_A0(float whereY_A0) {
     Mapbegin();
   }
   
+  
   public void GameEnd()
   {
 	  	//游戏失败显示Gameover
@@ -158,6 +159,10 @@ public void Map1_run()
     if (JSA0.GetSpritePositionY() > 14 || JSA0.GetSpritePositionX() < -43) {
     	System.out.println("因平地限制死亡！！！");
     	GameEnd();
+    }
+    
+    if (Ihelpman == 0) {
+    	
     }
     
   }

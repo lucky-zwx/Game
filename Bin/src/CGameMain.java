@@ -115,7 +115,7 @@ public class CGameMain
 		//如果触碰到左右阻挡物
 		if (szSrcName.indexOf("left")!=-1 || szSrcName.indexOf("right")!=-1){
 			map_first.JSA0.SetSpriteLinearVelocityX(0);
-			map_first.JSA0.SpriteMoveTo((float) (map_first.JSA0.GetSpritePositionX()-0.01), (float)(map_first.JSA0.GetSpritePositionY()), 100, true);
+			map_first.JSA0.SpriteMoveTo((float) (map_first.JSA0.GetSpritePositionX()-0.01), (float)(map_first.JSA0.GetSpritePositionY()), 60, true);
 		}
 		//如果主角触碰到下方阻碍物
 		if (szSrcName.indexOf("down")!=-1) {
